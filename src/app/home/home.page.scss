@@ -1,0 +1,73 @@
+.header-rojo, .header-rojo ion-title {
+  --background: #d32f2f !important;
+  --ion-color-base: #d32f2f !important;
+  background: #d32f2f !important;
+  color: #fff !important;
+}
+
+ion-title, .header-rojo ion-title {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+::ng-deep ion-searchbar .searchbar-input {
+  background: #fff !important;
+  color: #222 !important;
+  caret-color: #d32f2f !important;
+}
+
+::ng-deep ion-searchbar .searchbar-input::placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+/* Tarjetas cuadradas para cada Pokémon */
+.pokemon-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  margin: 12px 0;
+  background: #fff;
+  transition: transform 0.2s;
+  min-height: 320px;
+  min-width: 220px;
+  max-width: 250px;
+  width: 100%;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(211,47,47,0.15);
+}
+
+.pokemon-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto 8px auto;
+  background: #f8f8f8;
+  border-radius: 50%;
+  border: 2px solid #d32f2f22;
+}
+
+ion-card-title a {
+  color: #d32f2f !important;
+}
+
+ion-card-content {
+  width: 100%;
+  padding: 0 8px;
+}
+
+ion-list, ion-item, ion-label {
+  background: transparent !important;
+}
+
+@media (max-width: 600px) {
+  .pokemon-card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

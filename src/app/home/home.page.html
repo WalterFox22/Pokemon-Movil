@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="header-rojo">
+    <ion-title>Pokédex</ion-title>
+  </ion-toolbar>
+  <ion-toolbar class="header-rojo buscador-toolbar">
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionInput)="searchPokemon()"
+      placeholder="Buscar Pokémon"
+      debounce="300"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let pokemon of filteredPokemons">
+        <ion-card class="pokemon-card">
+          <ion-img class="pokemon-img" [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}"></ion-img>
+          <ion-card-header>
+            <ion-card-title>
+              <a [routerLink]="['/pokemon', pokemon.name]" style="text-decoration: none; color: #3880ff; font-weight: bold;">
+                {{ pokemon.name | titlecase }}
+              </a>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-label>
+                  <strong>Altura:</strong> {{ pokemon.height }}
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Peso:</strong> {{ pokemon.weight }}
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <strong>Tipos:</strong> {{ getTipos(pokemon) }}
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll *ngIf="!searchTerm" (ionInfinite)="loadPokemons($event)" threshold="100px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más Pokémon...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

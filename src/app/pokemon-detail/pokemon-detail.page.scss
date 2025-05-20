@@ -1,0 +1,143 @@
+/* Fondo blanco */
+.pokedex-background {
+  --background: #ffffff;
+  background: #ffffff;
+  min-height: 100vh;
+  color: #000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Toolbar rojo claro con texto blanco */
+.toolbar-pokedex {
+  --background: #e05a5a;
+  background-color: #e05a5a;
+  color: #fff !important;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(224, 90, 90, 0.6);
+}
+
+.title-pokedex {
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Contenedor general con fondo blanco y sombra */
+.pokedex-screen {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  color: #000;
+}
+
+/* Imagen centrada con borde rojo claro */
+.pokemon-image-wrapper {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.pokemon-image-wrapper img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #e05a5a;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(224, 90, 90, 0.7);
+}
+
+/* Lista de info con fondo blanco */
+.info-list-pokedex ion-item {
+  background: #fff;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+/* Listas dentro de labels */
+.stats-list-pokedex,
+.moves-list-pokedex {
+  margin: 4px 0 0 1em;
+  padding-left: 0;
+  list-style-type: disc;
+  color: #000;
+}
+
+/* Tarjeta de comentario con fondo blanco y sombra suave */
+.comentario-card-pokedex {
+  margin-top: 20px;
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(224, 90, 90, 0.2);
+}
+
+/* Botón de enviar comentario */
+.send-button-pokedex {
+  margin-top: 10px;
+  font-weight: 700;
+  --background: #e05a5a !important; /* rojo claro */
+  --color: #fff !important;         /* texto blanco */
+  border: 2px solid #b84141;        /* borde rojo oscuro para contraste */
+  box-shadow: 0 4px 8px rgba(224, 90, 90, 0.8);
+  transition: background-color 0.3s ease;
+}
+
+.send-button-pokedex:disabled {
+  --background: #f4a1a1 !important; /* rojo muy claro */
+  --color: #ccc !important;
+  border-color: #f4a1a1;
+  cursor: not-allowed;
+}
+
+.send-button-pokedex:hover:not(:disabled) {
+  --background: #b84141 !important; /* rojo más oscuro al hover */
+}
+
+/* Textarea ajustes */
+ion-textarea {
+  --background: #f9f9f9;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+}
+
+ion-textarea::part(native) {
+  color: #000;
+}
+
+/* Ion-label en ion-item dentro del formulario para que se vea bien */
+ion-item ion-label {
+  color: #000;
+  font-weight: 600;
+}
+
+/* === ESTILO PARA EL BOTÓN DE VOLVER (icono de flecha) === */
+.volver-button-pokedex {
+  --color: #fff;
+  --background: transparent;
+  font-size: 1.8rem;
+  margin-left: 6px;
+  padding: 0;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+}
+
+.volver-button-pokedex:hover {
+  transform: scale(1.1);
+}
+
+.volver-button-pokedex ion-icon {
+  color: #fff;
+}

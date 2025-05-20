@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar class="toolbar-pokedex">
+    <ion-title class="title-pokedex">{{ pokemon?.name | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-buttons slot="start">
+  <ion-button class="volver-button-pokedex" (click)="volverAlInicio()">
+    Volver
+  </ion-button>
+</ion-buttons>
+
+<ion-content *ngIf="pokemon" class="ion-padding pokedex-background">
+  <div class="pokedex-screen">
+    <div class="pokemon-image-wrapper">
+      <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+    </div>
+
+    <ion-list lines="none" class="info-list-pokedex">
+      <ion-item>
+        <ion-label><strong>Altura:</strong> {{ pokemon.height }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Peso:</strong> {{ pokemon.weight }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Tipos:</strong> {{ getTipos() }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Habilidades:</strong> {{ getHabilidades() }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <strong>Estadísticas base:</strong>
+          <ul class="stats-list-pokedex">
+            <li *ngFor="let stat of getEstadisticas()">
+              {{ stat.stat.name | titlecase }}: {{ stat.base_stat }}
+            </li>
+          </ul>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <strong>Movimientos principales:</strong>
+          <ul class="moves-list-pokedex">
+            <li *ngFor="let move of getMovimientosPrincipales()">
+              {{ move.move.name | titlecase }}
+            </li>
+          </ul>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-card class="comentario-card-pokedex">
+      <ion-card-header>
+        <ion-card-title>Deja un comentario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-textarea
+            rows="4"
+            placeholder="Escribe tu comentario aquí..."
+            [(ngModel)]="comentario"
+            maxlength="250"
+            clearInput="true"
+          ></ion-textarea>
+        </ion-item>
+        <ion-button
+          expand="block"
+          color="danger"
+          (click)="enviarComentario()"
+          [disabled]="!comentario || comentario.trim() === ''"
+          class="send-button-pokedex"
+        >
+          Enviar Comentario
+        </ion-button>
+
+        <!-- Mostrar comentarios guardados -->
+        <div *ngIf="comentarios.length > 0" class="comentarios-list-pokedex" style="margin-top: 1.5em;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label><strong>Comentarios de otros entrenadores</strong></ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let c of comentarios">
+              <ion-label>
+                <p style="white-space: pre-line;">{{ c.texto }}</p>
+                <small style="color: #888;">{{ c.fecha | date:'short' }}</small>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div *ngIf="comentarios.length === 0" class="comentarios-list-pokedex" style="margin-top: 1.5em;">
+          <ion-text color="medium">Aún no hay comentarios para este Pokémon.</ion-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer class="footer-pokedex">
+  <ion-toolbar>
+    <ion-title class="footer-title">Pokédex - Hecho por Adrian Cadena y Walter Cobacango</ion-title>
+  </ion-toolbar>
+</ion-footer>
